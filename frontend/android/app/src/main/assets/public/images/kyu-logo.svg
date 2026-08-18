@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 240" width="200" height="240">
+  <!-- Shield -->
+  <path d="M100 10 L185 50 L185 130 Q185 190 100 230 Q15 190 15 130 L15 50 Z" fill="#1a6b3c" stroke="#c8a84e" stroke-width="3"/>
+  <!-- Inner shield -->
+  <path d="M100 25 L170 58 L170 128 Q170 180 100 215 Q30 180 30 128 L30 58 Z" fill="#0d4a28" stroke="#c8a84e" stroke-width="1.5"/>
+  <!-- Book -->
+  <rect x="65" y="90" width="70" height="55" rx="3" fill="#f5f0e1" stroke="#8b7332" stroke-width="1.5"/>
+  <line x1="100" y1="90" x2="100" y2="145" stroke="#8b7332" stroke-width="1"/>
+  <line x1="72" y1="102" x2="95" y2="102" stroke="#5a4a2a" stroke-width="1" opacity="0.5"/>
+  <line x1="72" y1="110" x2="95" y2="110" stroke="#5a4a2a" stroke-width="1" opacity="0.5"/>
+  <line x1="72" y1="118" x2="95" y2="118" stroke="#5a4a2a" stroke-width="1" opacity="0.5"/>
+  <line x1="105" y1="102" x2="128" y2="102" stroke="#5a4a2a" stroke-width="1" opacity="0.5"/>
+  <line x1="105" y1="110" x2="128" y2="110" stroke="#5a4a2a" stroke-width="1" opacity="0.5"/>
+  <line x1="105" y1="118" x2="128" y2="118" stroke="#5a4a2a" stroke-width="1" opacity="0.5"/>
+  <!-- Tree/Leaves above book -->
+  <path d="M100 55 Q85 70 80 85 Q90 75 100 70 Q110 75 120 85 Q115 70 100 55Z" fill="#2d9b4e"/>
+  <path d="M100 50 Q90 62 86 75 Q94 67 100 63 Q106 67 114 75 Q110 62 100 50Z" fill="#3ab55c"/>
+  <line x1="100" y1="70" x2="100" y2="90" stroke="#5a3a1a" stroke-width="2"/>
+  <!-- Banner -->
+  <path d="M50 155 L150 155 L145 175 L55 175 Z" fill="#c8a84e" stroke="#8b7332" stroke-width="1"/>
+  <text x="100" y="170" text-anchor="middle" font-family="serif" font-size="9" fill="#1a1a1a" font-weight="bold">KYU</text>
+  <!-- Stars -->
+  <circle cx="65" cy="45" r="2" fill="#c8a84e"/>
+  <circle cx="100" cy="35" r="2.5" fill="#c8a84e"/>
+  <circle cx="135" cy="45" r="2" fill="#c8a84e"/>
+</svg>
