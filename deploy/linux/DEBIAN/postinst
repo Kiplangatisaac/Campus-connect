@@ -1,0 +1,63 @@
+#!/bin/bash
+set -e
+
+INSTALL_DIR="/opt/campus-connect"
+VENV_DIR="$INSTALL_DIR/venv"
+
+echo "Installing KyU Campus Connect..."
+
+# Create installation directory
+mkdir -p "$INSTALL_DIR"
+
+# Copy application files
+cp -r /opt/campus-connect-temp/backend "$INSTALL_DIR/"
+cp -r /opt/campus-connect-temp/frontend "$INSTALL_DIR/"
+
+# Create Python virtual environment
+python3 -m venv "$VENV_DIR"
+"$VENV_DIR/bin/pip" install --upgrade pip setuptools wheel
+"$VENV_DIR/bin/pip" install cryptography>=42.0.0
+"$VENV_DIR/bin/pip" install -r "$INSTALL_DIR/backend/requirements.txt"
+
+# Create startup script
+cat > /usr/local/bin/campus-connect << 'EOF'
+#!/bin/bash
+cd /opt/campus-connect
+source venv/bin/activate
+cd backend
+exec uvicorn main:app --host 0.0.0.0 --port 8000
+EOF
+chmod +x /usr/local/bin/campus-connect
+
+# Create systemd service
+cat > /etc/systemd/system/campus-connect.service << 'EOF'
+[Unit]
+Description=KyU Campus Connect
+After=network.target
+
+[Service]
+Type=simple
+User=campus-connect
+WorkingDirectory=/opt/campus-connect/backend
+ExecStart=/opt/campus-connect/venv/bin/uvicorn main:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=10
+Environment=ENVIRONMENT=production
+Environment=DEBUG=false
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Create system user
+useradd -r -s /bin/false campus-connect 2>/dev/null || true
+chown -R campus-connect:campus-connect "$INSTALL_DIR"
+
+# Enable and start service
+systemctl daemon-reload
+systemctl enable campus-connect
+systemctl start campus-connect
+
+echo "Installation complete!"
+echo "Access Campus Connect at: http://localhost:8000"
+echo "Service status: systemctl status campus-connect"

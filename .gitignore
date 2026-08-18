@@ -1,0 +1,50 @@
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Build outputs
+build/
+dist/
+*.egg-info/
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# Database files
+*.db
+*.sqlite3
+*.sqlite
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Uploads (user data)
+uploads/*
+!uploads/.gitkeep
+
+# Android build
+frontend/android/.gradle/
+frontend/android/app/build/
+frontend/android/local.properties
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Backup metadata
+backend/backup_metadata.db
+backend/calendar_metadata.db

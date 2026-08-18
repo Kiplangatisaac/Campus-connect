@@ -1,0 +1,70 @@
+name: Build All Platforms
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      - run: cd frontend && npm ci
+      - run: cd frontend && CI=false npm run build
+      - uses: android-actions/setup-android@v3
+      - name: Build APK
+        run: |
+          cd frontend/android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kyu-android-apk
+          path: frontend/android/app/build/outputs/apk/debug/app-debug.apk
+          retention-days: 30
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build DEB
+        run: |
+          cd deploy/linux
+          chmod +x build-deb.sh
+          bash build-deb.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kyu-linux-deb
+          path: deploy/linux/build/campus-connect_1.0.0_amd64.deb
+          retention-days: 30
+
+  build-windows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      - run: cd frontend && npm ci
+      - run: cd frontend && CI=false npm run build
+      - name: Package Windows
+        run: |
+          cd frontend/build
+          zip -r ../../../kyu-campus-connect-windows.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: kyu-windows-zip
+          path: kyu-campus-connect-windows.zip
+          retention-days: 30

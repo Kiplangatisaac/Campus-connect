@@ -1,0 +1,293 @@
+/* Kirinyaga University Campus Connect - Login Styles */
+
+.ku-login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.ku-login-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    linear-gradient(135deg, rgba(26, 107, 60, 0.85) 0%, rgba(13, 74, 40, 0.9) 50%, rgba(10, 60, 30, 0.95) 100%),
+    url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%231a5c2e" width="1200" height="800"/><rect fill="%232d8a4e" x="0" y="500" width="1200" height="300" rx="0"/><rect fill="%23c4a265" x="350" y="180" width="500" height="350" rx="8"/><rect fill="%23e8dcc8" x="360" y="190" width="480" height="160" rx="4"/><circle fill="%238b7355" cx="600" cy="120" r="80" opacity="0.6"/><rect fill="%23d4c4a0" x="450" y="200" width="80" height="120" rx="2"/><rect fill="%23d4c4a0" x="540" y="200" width="80" height="120" rx="2"/><rect fill="%23d4c4a0" x="630" y="200" width="80" height="120" rx="2"/></svg>');
+  background-size: cover;
+  background-position: center;
+}
+
+.ku-login-container {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 20px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.ku-login-header {
+  background: linear-gradient(135deg, #1a6b3c 0%, #0d4a28 100%);
+  padding: 30px 20px 20px;
+  text-align: center;
+  border-bottom: 4px solid #c8a84e;
+}
+
+.ku-login-logo {
+  width: 90px;
+  height: auto;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.ku-login-header h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.ku-login-body {
+  background: #ffffff;
+  padding: 30px 35px;
+}
+
+.ku-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.ku-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ku-form-group label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.ku-form-group input {
+  padding: 12px 14px;
+  border: 2px solid #e0d8c8;
+  border-radius: 6px;
+  font-size: 15px;
+  background: #fefcf6;
+  color: #333;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+
+.ku-form-group input:focus {
+  border-color: #1a6b3c;
+  box-shadow: 0 0 0 3px rgba(26, 107, 60, 0.15);
+}
+
+.ku-form-group input::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.ku-password-wrapper {
+  position: relative;
+  display: flex;
+}
+
+.ku-password-wrapper input {
+  flex: 1;
+  padding-right: 42px;
+}
+
+.ku-toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+}
+
+.ku-form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.ku-btn-forgot {
+  background: #e87c1e;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.ku-btn-forgot:hover {
+  background: #d06a10;
+}
+
+.ku-btn-signin {
+  background: #1a6b3c;
+  color: #fff;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ku-btn-signin:hover:not(:disabled) {
+  background: #0d4a28;
+  transform: translateY(-1px);
+}
+
+.ku-btn-signin:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Social Login */
+.ku-social-section {
+  margin-top: 24px;
+}
+
+.ku-social-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.ku-social-divider::before,
+.ku-social-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e0d8c8;
+}
+
+.ku-social-divider span {
+  color: #999;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.social-login-section .social-buttons-row {
+  display: flex;
+  gap: 10px;
+}
+
+.social-login-section .social-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px;
+  border: 2px solid #e0d8c8;
+  border-radius: 6px;
+  background: #fefcf6;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  transition: all 0.2s;
+}
+
+.social-login-section .social-btn:hover {
+  border-color: #1a6b3c;
+  background: #f0faf4;
+}
+
+.social-login-section .social-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.social-login-section .social-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Footer */
+.ku-login-footer {
+  text-align: center;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e0d8c8;
+}
+
+.ku-login-footer p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.ku-login-footer a {
+  color: #1a6b3c;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.ku-login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Info Bar */
+.ku-login-info {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+}
+
+.ku-login-info p {
+  margin: 4px 0;
+}
+
+.ku-iso {
+  font-size: 11px;
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .ku-login-body {
+    padding: 24px 20px;
+  }
+  .ku-form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .ku-btn-forgot, .ku-btn-signin {
+    width: 100%;
+    text-align: center;
+  }
+  .social-login-section .social-buttons-row {
+    flex-direction: column;
+  }
+}

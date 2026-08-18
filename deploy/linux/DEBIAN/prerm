@@ -1,0 +1,19 @@
+#!/bin/bash
+set -e
+
+echo "Uninstalling KyU Campus Connect..."
+
+# Stop and disable service
+systemctl stop campus-connect 2>/dev/null || true
+systemctl disable campus-connect 2>/dev/null || true
+
+# Remove files
+rm -rf /opt/campus-connect
+rm -f /usr/local/bin/campus-connect
+rm -f /etc/systemd/system/campus-connect.service
+systemctl daemon-reload
+
+# Remove system user
+userdel campus-connect 2>/dev/null || true
+
+echo "Uninstallation complete!"

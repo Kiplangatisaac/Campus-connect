@@ -1,0 +1,51 @@
+{
+  "short_name": "KyU Campus",
+  "name": "KyU Campus Connect",
+  "description": "Innovative Technology for a Dynamic World - Campus communication, study groups, AI assistant, and more.",
+  "icons": [
+    {
+      "src": "/images/kyu-logo.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/kyu-logo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#1a365d",
+  "background_color": "#ffffff",
+  "categories": ["education", "productivity"],
+  "lang": "en",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "RelatedApplications": [
+    {
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=ke.kyu.campusconnect",
+      "id": "ke.kyu.campusconnect"
+    },
+    {
+      "platform": "itunes",
+      "url": "https://apps.apple.com/app/kyu-campus-connect/id000000000"
+    }
+  ]
+}

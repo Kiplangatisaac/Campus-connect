@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-gb" lang="en-gb" dir="ltr">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title>Error: 404 Page not found</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="/templates/ja_athena/css/jpages.css" type="text/css" />
+
+	<!-- Load Google font -->
+	<link href="https://fonts.googleapis.com/css2?family=Glegoo:wght@400;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link href="https://use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+  
+	<link href="/templates/ja_athena/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon" />
+
+</head>
+
+<body class="error-page site  view- no-layout no-task">
+
+	<!-- Body -->
+	<div class="error-page-wrap">
+    <div class="error-info">
+      <span class="error-code">404</span>
+      <div class="error-msg">
+        <h2>Page not found</h2>
+              </div>
+    </div>
+
+    <div class="error-other-info">
+
+      <p><strong>An error has occurred while processing your request.</strong></p>
+
+      <div class="page-redirect">
+        <a href="/index.php" title="Home Page">Home Page</a>
+      </div>
+
+    </div>
+	</div>
+
+	</body>
+</html>

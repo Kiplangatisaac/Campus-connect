@@ -1,0 +1,152 @@
+.kyu-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--header-height);
+  background: linear-gradient(135deg, #0d5c2e 0%, #1a6b3c 100%);
+  color: #ffffff;
+  padding: 0 24px;
+  border-bottom: 3px solid #c8a84e;
+  z-index: 200;
+  flex-shrink: 0;
+}
+
+.kyu-header-left {
+  display: flex;
+  align-items: center;
+}
+
+.kyu-header-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.kyu-header-logo-img {
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.1);
+  padding: 2px;
+}
+
+.kyu-header-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.kyu-header-university {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.kyu-header-motto {
+  font-size: 10px;
+  opacity: 0.85;
+  font-style: italic;
+  letter-spacing: 0.2px;
+}
+
+.kyu-header-center {
+  display: flex;
+  align-items: center;
+}
+
+.kyu-header-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.kyu-header-link {
+  color: rgba(255,255,255,0.9);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.kyu-header-link:hover {
+  background: rgba(255,255,255,0.15);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.kyu-header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.kyu-header-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 1.3;
+}
+
+.kyu-header-phone,
+.kyu-header-email {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.kyu-header-social {
+  display: flex;
+  gap: 6px;
+}
+
+.kyu-header-social a {
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  transition: all 0.2s ease;
+}
+
+.kyu-header-social a:hover {
+  background: rgba(255,255,255,0.25);
+  color: #ffffff;
+}
+
+.kyu-header-user {
+  cursor: pointer;
+}
+
+.kyu-header-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  object-fit: cover;
+  transition: border-color 0.2s ease;
+}
+
+.kyu-header-avatar:hover {
+  border-color: #c8a84e;
+}
+
+@media (max-width: 1024px) {
+  .kyu-header-contact,
+  .kyu-header-social {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .kyu-header-center {
+    display: none;
+  }
+  .kyu-top-header {
+    padding: 0 16px;
+  }
+}

@@ -1,0 +1,307 @@
+.install-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.install-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.install-banner-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.install-banner-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.install-banner-text strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.install-banner-text span {
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.install-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.install-btn-primary {
+  background: white;
+  color: #1a365d;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.install-btn-primary:hover {
+  background: #e2e8f0;
+  transform: scale(1.02);
+}
+
+.install-btn-dismiss {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 4px 8px;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+}
+
+.install-btn-dismiss:hover {
+  opacity: 1;
+}
+
+/* Modal Overlay */
+.install-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal */
+.install-modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalSlideUp 0.3s ease-out;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.install-modal-header {
+  text-align: center;
+  padding: 32px 24px 24px;
+  position: relative;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.install-modal-logo {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.install-modal-header h2 {
+  margin: 0 0 8px 0;
+  color: #1a365d;
+  font-size: 24px;
+}
+
+.install-modal-header p {
+  margin: 0;
+  color: #718096;
+  font-size: 14px;
+}
+
+.install-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: #f7fafc;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #718096;
+  transition: all 0.2s;
+}
+
+.install-modal-close:hover {
+  background: #e2e8f0;
+  color: #1a365d;
+}
+
+/* Platform Cards */
+.install-platforms {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.install-platform-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.install-platform-card:hover {
+  border-color: #2c5282;
+  background: #f7fafc;
+  transform: translateX(4px);
+}
+
+.install-platform-card.selected {
+  border-color: #1a365d;
+  background: #ebf8ff;
+}
+
+.platform-icon {
+  font-size: 32px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7fafc;
+  border-radius: 12px;
+}
+
+.platform-info {
+  flex: 1;
+}
+
+.platform-info h3 {
+  margin: 0 0 4px 0;
+  font-size: 16px;
+  color: #1a365d;
+}
+
+.platform-info p {
+  margin: 0 0 4px 0;
+  font-size: 13px;
+  color: #718096;
+}
+
+.platform-meta {
+  font-size: 12px;
+  color: #a0aec0;
+  font-weight: 500;
+}
+
+.platform-arrow {
+  font-size: 20px;
+  color: #a0aec0;
+  transition: all 0.2s;
+}
+
+.install-platform-card:hover .platform-arrow {
+  color: #2c5282;
+  transform: translateX(4px);
+}
+
+/* Footer */
+.install-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+}
+
+.install-modal-footer p {
+  margin: 0;
+  font-size: 12px;
+  color: #a0aec0;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .install-banner {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .install-banner-content {
+    width: 100%;
+  }
+
+  .install-banner-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .install-btn-primary {
+    flex: 1;
+  }
+
+  .install-modal {
+    width: 95%;
+    margin: 16px;
+  }
+
+  .install-platform-card {
+    padding: 12px;
+  }
+
+  .platform-icon {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+  }
+}

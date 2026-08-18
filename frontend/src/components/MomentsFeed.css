@@ -1,0 +1,181 @@
+.moments-feed {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.moments-header h2 {
+  color: #1a6b3c;
+  margin-bottom: 20px;
+}
+
+.moments-compose {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.compose-input textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  font-size: 16px;
+  outline: none;
+  min-height: 80px;
+  font-family: inherit;
+}
+
+.compose-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.compose-camera {
+  background: none;
+  border: none;
+  color: #1a6b3c;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.compose-submit {
+  background: linear-gradient(135deg, #1a6b3c, #2ecc71);
+  color: white;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.compose-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.moments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.moment-card {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.moment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.moment-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.moment-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a6b3c, #2ecc71);
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.moment-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moment-user-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.moment-user-info span {
+  font-size: 12px;
+  color: #999;
+}
+
+.moment-more {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.moment-content p {
+  margin: 0 0 12px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.moment-image {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+.moment-actions {
+  display: flex;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.moment-action {
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.moment-action:hover {
+  color: #1a6b3c;
+}
+
+.moment-action.liked {
+  color: #e74c3c;
+}
+
+.moments-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+}
+
+@media (max-width: 600px) {
+  .moments-feed {
+    padding: 12px;
+  }
+}

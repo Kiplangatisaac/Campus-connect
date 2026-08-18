@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+# Dependencies must be pre-installed: sudo apt-get install -y python3-dev gcc libffi-dev build-essential python3-venv
+:

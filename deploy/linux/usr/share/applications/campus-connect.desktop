@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=KyU Campus Connect
+Comment=University Communication System
+Exec=/usr/local/bin/campus-connect
+Icon=campus-connect
+Terminal=true
+Type=Application
+Categories=Network;InstantMessaging;Education;
+StartupNotify=true

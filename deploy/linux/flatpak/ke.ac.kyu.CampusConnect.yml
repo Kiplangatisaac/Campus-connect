@@ -1,0 +1,26 @@
+app-id: ke.ac.kyu.CampusConnect
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: campus-connect
+
+modules:
+  - name: campus-connect
+    buildsystem: simple
+    build-commands:
+      - mkdir -p /app/opt/campus-connect
+      - cp -r backend /app/opt/campus-connect/
+      - cp -r frontend/build /app/opt/campus-connect/frontend/
+      - mkdir -p /app/bin
+      - cat > /app/bin/campus-connect << 'EOF'
+      #!/bin/bash
+      cd /app/opt/campus-connect
+      source venv/bin/activate 2>/dev/null || true
+      cd backend
+      uvicorn main:app --host 0.0.0.0 --port 8000
+      EOF
+      - chmod +x /app/bin/campus-connect
+    sources:
+      - type: archive
+        url: https://github.com/Kiplangatisaac/Smartcode-C/archive/refs/heads/main.zip
+        sha256: CHECKSUM_HERE

@@ -1,0 +1,14 @@
+Package: campus-connect
+Version: 1.0.0
+Section: internet
+Priority: optional
+Architecture: amd64
+Depends: python3 (>= 3.11), python3-pip, python3-venv, libffi-dev
+Build-Depends: debhelper (>= 10), python3-dev, gcc, libffi-dev, build-essential
+Maintainer: KyU Campus Connect <info@kyu.ac.ke>
+Description: KyU Campus Connect - University Communication System
+ A comprehensive campus communication platform for Kirinyaga University.
+ Features include real-time chat, groups, events, calendar sync,
+ bulletin board, and cloud backup integration.
+ .
+ Innovative Technology for a Dynamic World.

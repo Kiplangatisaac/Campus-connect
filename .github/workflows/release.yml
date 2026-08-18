@@ -1,0 +1,146 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. v1.0.0)'
+        required: true
+        default: 'v1.0.0'
+
+permissions:
+  contents: write
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - run: cd frontend && npm ci
+
+      - run: cd frontend && CI=false npm run build
+
+      - uses: android-actions/setup-android@v3
+
+      - name: Build APK
+        run: |
+          cd frontend/android
+          chmod +x gradlew
+          ./gradlew assembleDebug
+
+      - name: Build Release APK
+        run: |
+          cd frontend/android
+          ./gradlew assembleRelease
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-apk
+          path: |
+            frontend/android/app/build/outputs/apk/debug/app-debug.apk
+            frontend/android/app/build/outputs/apk/release/app-release-unsigned.apk
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build DEB package
+        run: |
+          cd deploy/linux
+          chmod +x build-deb.sh
+          bash build-deb.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: linux-deb
+          path: deploy/linux/build/campus-connect_1.0.0_amd64.deb
+
+  build-windows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - run: cd frontend && npm ci
+
+      - run: cd frontend && CI=false npm run build
+
+      - name: Create Windows ZIP
+        run: |
+          cd frontend/build
+          zip -r ../../kyu-campus-connect-windows.zip .
+          cd ../..
+          cp deploy/windows/install.bat .
+          zip -u kyu-campus-connect-windows.zip install.bat
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: windows-zip
+          path: kyu-campus-connect-windows.zip
+
+  publish-release:
+    needs: [build-android, build-linux, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: List artifacts
+        run: find artifacts -type f | head -20
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.event.inputs.version || github.ref_name }}
+          name: "KyU Campus Connect ${{ github.event.inputs.version || github.ref_name }}"
+          body: |
+            ## KyU Campus Connect ${{ github.event.inputs.version || github.ref_name }}
+
+            ### What's New
+            - Bug fixes and performance improvements
+            - Updated download page with Play Store and App Store links
+            - Cloud storage backup support
+
+            ### Downloads
+            - **Android APK**: `app-debug.apk`
+            - **Linux DEB**: `campus-connect_1.0.0_amd64.deb`
+            - **Windows**: `kyu-campus-connect-windows.zip`
+            - **Web App (PWA)**: Visit the hosted URL
+
+            ### Installation
+            **Android**: Download APK → Enable "Unknown sources" → Install
+            **Linux**: `sudo dpkg -i campus-connect_1.0.0_amd64.deb`
+            **Windows**: Extract ZIP → Run install.bat
+          files: |
+            artifacts/android-apk/app-debug.apk
+            artifacts/android-apk/app-release-unsigned.apk
+            artifacts/linux-deb/campus-connect_1.0.0_amd64.deb
+            artifacts/windows-zip/kyu-campus-connect-windows.zip
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
